@@ -4,22 +4,35 @@
     <title>Friendbook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="css/normalize.css">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
 
-   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
-    <%= yield %>
+  <body>
+    <div class="main">
+      <header class="clearfix">
+        <i class="fab fa-facebook icon fa-4x"></i>
+        <div class="header-menu">
+          <% if logged_in? %>
+            <a><%= link_to "Profile", user_path(current_user.id) %></a>
+            <a><%= link_to "Logout", session_path(current_user.id), method: :delete %></a>
+          <% else %>
+            <a><%= link_to "Sign up", new_user_path %></a>
+            <a><%= link_to "Login", new_session_path %></a>
+          <% end %>
+        </div>
+      </header>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <%= yield %>
+      <footer>
+        <div class="footer_area">
+          <p>DIVE INTO CODE</p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

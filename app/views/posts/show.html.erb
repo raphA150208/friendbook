@@ -1,14 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
 
+<%# <% if @post.picture.attached? %>
 <p>
   <strong>Picture:</strong>
-  <%= @post.picture %>
+  <%= image_tag @post.picture.url if @post.picture.url.present? %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to '編集', edit_post_path(@post) %> |
+<%= link_to '投稿一覧', posts_path %>
