@@ -3,7 +3,6 @@
   <%= @post.content %>
 </p>
 
-<%# <% if @post.picture.attached? %>
 <p>
   <strong>Picture:</strong>
   <%= image_tag @post.picture.url if @post.picture.url.present? %>

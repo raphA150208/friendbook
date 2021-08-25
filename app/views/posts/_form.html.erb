@@ -18,8 +18,6 @@
 
    <div class="field">
     <%= form.label :picture %>
-    <!-- 確認画面から新規作成画面に戻った時に、 -->
-    <!-- アップロードした画像を表示させるための記述 -->
     <%= image_tag(@post.picture.url) if @post.picture && @post.picture.url %>
     <%= form.file_field :picture %>
     <%= form.hidden_field :picture_cache %>
